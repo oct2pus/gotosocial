@@ -72,7 +72,7 @@ func (suite *CommonTestSuite) SetupSuite() {
 
 func (suite *CommonTestSuite) SetupTest() {
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	suite.log = testrig.NewTestLog()
 	suite.formatter = text.NewFormatter(suite.config, suite.db, suite.log)
 

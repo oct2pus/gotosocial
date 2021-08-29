@@ -55,17 +55,28 @@ var testModels []interface{} = []interface{}{
 	&oauth.Client{},
 }
 
-// NewTestDB returns a new initialized, empty database for testing.
+// NewTestPostgres returns a new initialized, empty database for testing.
 //
 // If the environment variable GTS_DB_ADDRESS is set, it will take that
 // value as the database address instead.
-func NewTestDB() db.DB {
+func NewTestPostgres() db.DB {
 	config := NewTestConfig()
 	alternateAddress := os.Getenv("GTS_DB_ADDRESS")
 	if alternateAddress != "" {
 		config.DBConfig.Address = alternateAddress
 	}
 
+	testDB, err := bundb.NewBunDBService(context.Background(), config, NewTestLog())
+	if err != nil {
+		logrus.Panic(err)
+	}
+	return testDB
+}
+
+func NewTestSQLite() db.DB {
+	config := NewTestConfig()
+	config.DBConfig.Type = "sqlite"
+	config.DBConfig.Address = ":memory:"
 	testDB, err := bundb.NewBunDBService(context.Background(), config, NewTestLog())
 	if err != nil {
 		logrus.Panic(err)

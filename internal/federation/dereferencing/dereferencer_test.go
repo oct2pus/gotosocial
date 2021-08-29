@@ -34,6 +34,8 @@ type DereferencerStandardTestSuite struct {
 	db     db.DB
 	log    *logrus.Logger
 
+	dbType string
+
 	testRemoteStatuses map[string]vocab.ActivityStreamsNote
 	testRemoteAccounts map[string]vocab.ActivityStreamsPerson
 	testAccounts       map[string]*gtsmodel.Account

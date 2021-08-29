@@ -104,7 +104,13 @@ func (suite *StatusTestSuite) SetupSuite() {
 
 func (suite *StatusTestSuite) SetupTest() {
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+
+	if suite.dbType == "postgres" {
+		suite.db = testrig.NewTestPostgres()
+	} else if suite.dbType == "sqlite" {
+		suite.db = testrig.NewTestSQLite()
+	}
+
 	suite.log = testrig.NewTestLog()
 	suite.dereferencer = dereferencing.NewDereferencer(suite.config,
 		suite.db,
@@ -209,5 +215,11 @@ func (suite *StatusTestSuite) TearDownTest() {
 }
 
 func TestStatusTestSuite(t *testing.T) {
-	suite.Run(t, new(StatusTestSuite))
+	thisSuite := new(StatusTestSuite)
+
+	thisSuite.dbType = "postgres"
+	suite.Run(t, thisSuite)
+
+	thisSuite.dbType = "sqlite"
+	suite.Run(t, thisSuite)
 }

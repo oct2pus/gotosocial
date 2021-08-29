@@ -75,7 +75,7 @@ type ServeFileTestSuite struct {
 func (suite *ServeFileTestSuite) SetupSuite() {
 	// setup standard items
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	suite.log = testrig.NewTestLog()
 	suite.storage = testrig.NewTestStorage()
 	suite.federator = testrig.NewTestFederator(suite.db, testrig.NewTestTransportController(testrig.NewMockHTTPClient(nil), suite.db), suite.storage)

@@ -40,7 +40,7 @@ func (suite *IndexTestSuite) SetupSuite() {
 
 func (suite *IndexTestSuite) SetupTest() {
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	suite.log = testrig.NewTestLog()
 	suite.tc = testrig.NewTestTypeConverter(suite.db)
 

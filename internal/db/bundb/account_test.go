@@ -45,7 +45,7 @@ func (suite *AccountTestSuite) SetupSuite() {
 
 func (suite *AccountTestSuite) SetupTest() {
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	suite.log = testrig.NewTestLog()
 
 	testrig.StandardDBSetup(suite.db, suite.testAccounts)

@@ -334,7 +334,7 @@ const (
 
 func (suite *ASToInternalTestSuite) SetupSuite() {
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	suite.log = testrig.NewTestLog()
 	suite.accounts = testrig.NewTestAccounts()
 	suite.people = testrig.NewTestFediPeople()

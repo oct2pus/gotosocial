@@ -37,7 +37,7 @@ func (suite *ManagerTestSuite) SetupSuite() {
 
 func (suite *ManagerTestSuite) SetupTest() {
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	suite.log = testrig.NewTestLog()
 	suite.tc = testrig.NewTestTypeConverter(suite.db)
 

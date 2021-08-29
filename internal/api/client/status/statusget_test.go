@@ -42,7 +42,7 @@ func (suite *StatusGetTestSuite) SetupSuite() {
 
 func (suite *StatusGetTestSuite) SetupTest() {
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	suite.storage = testrig.NewTestStorage()
 	suite.log = testrig.NewTestLog()
 	suite.federator = testrig.NewTestFederator(suite.db, testrig.NewTestTransportController(testrig.NewMockHTTPClient(nil), suite.db), suite.storage)

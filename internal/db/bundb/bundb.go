@@ -83,6 +83,7 @@ func NewBunDBService(ctx context.Context, c *config.Config, log *logrus.Logger) 
 	switch strings.ToLower(c.DBConfig.Type) {
 	case dbTypePostgres:
 		// POSTGRES
+		log.Debug("creating db type postgres")
 		opts, err := deriveBunDBPGOptions(c)
 		if err != nil {
 			return nil, fmt.Errorf("could not create bundb postgres options: %s", err)
@@ -91,6 +92,7 @@ func NewBunDBService(ctx context.Context, c *config.Config, log *logrus.Logger) 
 		conn = WrapDBConn(bun.NewDB(sqldb, pgdialect.New()), log)
 	case dbTypeSqlite:
 		// SQLITE
+		log.Debug("creating db type sqlite")
 		var err error
 		sqldb, err = sql.Open("sqlite", c.DBConfig.Address)
 		if err != nil {

@@ -49,7 +49,7 @@ func (suite *PgClientStoreTestSuite) SetupSuite() {
 
 // SetupTest creates a postgres connection and creates the oauth_clients table before each test
 func (suite *PgClientStoreTestSuite) SetupTest() {
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	testrig.StandardDBSetup(suite.db, nil)
 }
 

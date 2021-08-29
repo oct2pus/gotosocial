@@ -55,7 +55,7 @@ type ProtocolTestSuite struct {
 func (suite *ProtocolTestSuite) SetupSuite() {
 	// setup standard items
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	suite.log = testrig.NewTestLog()
 	suite.storage = testrig.NewTestStorage()
 	suite.typeConverter = testrig.NewTestTypeConverter(suite.db)

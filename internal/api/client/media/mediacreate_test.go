@@ -78,7 +78,7 @@ type MediaCreateTestSuite struct {
 func (suite *MediaCreateTestSuite) SetupSuite() {
 	// setup standard items
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	suite.log = testrig.NewTestLog()
 	suite.storage = testrig.NewTestStorage()
 	suite.tc = testrig.NewTestTypeConverter(suite.db)

@@ -65,7 +65,7 @@ func (suite *UtilTestSuite) SetupSuite() {
 
 func (suite *UtilTestSuite) SetupTest() {
 	suite.config = testrig.NewTestConfig()
-	suite.db = testrig.NewTestDB()
+	suite.db = testrig.NewTestPostgres()
 	suite.log = testrig.NewTestLog()
 	suite.typeConverter = testrig.NewTestTypeConverter(suite.db)
 	suite.fromClientAPIChan = make(chan gtsmodel.FromClientAPI, 100)

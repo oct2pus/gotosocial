@@ -1382,7 +1382,7 @@ func getSignatureForActivity(activity pub.Activity, pubKeyID string, privkey cry
 	}
 
 	// use the client to create a new transport
-	c := NewTestTransportController(client, NewTestDB())
+	c := NewTestTransportController(client, NewTestPostgres())
 	tp, err := c.NewTransport(pubKeyID, privkey)
 	if err != nil {
 		panic(err)
@@ -1424,7 +1424,7 @@ func getSignatureForDereference(pubKeyID string, privkey crypto.PrivateKey, dest
 	}
 
 	// use the client to create a new transport
-	c := NewTestTransportController(client, NewTestDB())
+	c := NewTestTransportController(client, NewTestPostgres())
 	tp, err := c.NewTransport(pubKeyID, privkey)
 	if err != nil {
 		panic(err)
